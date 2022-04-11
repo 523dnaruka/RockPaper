@@ -2,7 +2,7 @@ let pScoreboard = document.querySelector('.p-count');
 let cScoreboard = document.querySelector('.c-count');
 let roundResult = document.querySelector('.result');
 let computerChoiceSpan = document.querySelector('.computerChoice');
-let userChoiceSpan = document.querySelector('.userChoice');
+let playerActionSpan = document.querySelector('.playerAction');
 let winnerPannel = document.querySelector('.winner');
 
 let playerScore = 0;
@@ -12,16 +12,16 @@ let playerChoice;
 const gameOptions = ["rock", "paper", "scissor"];
 
 
-function computerChoose() {
+function computerAction() {
   const randomNum = Math.floor(Math.random() * 3);
     computerChoice = gameOptions[randomNum];
     computerChoiceSpan.innerHTML = computerChoice;
 }//random comp choice
 
-function userChoice(choice) {
+function playerAction(choice) {
     playerChoice = gameOptions[choice];
-    userChoiceSpan.innerHTML = playerChoice;
-    computerChoose();
+    playerActionSpan.innerHTML = playerChoice;
+    computerAction();
     game(playerChoice,computerChoice);
 }//player choice
 
@@ -69,7 +69,7 @@ function resetGame() {
     pScoreboard.innerHTML = playerScore;
     computerScore = 0;
     cScoreboard.innerHTML = computerScore;
-    userChoiceSpan.innerHTML = "";
+    playerActionSpan.innerHTML = "";
     computerChoiceSpan.innerHTML = "";
     winnerPannel.style.display = "none";
 }//reset
