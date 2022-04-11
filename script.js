@@ -5,29 +5,31 @@ let computerChoiceSpan = document.querySelector('.computerChoice');
 let userChoiceSpan = document.querySelector('.userChoice');
 let winnerPannel = document.querySelector('.winner');
 
-
 let playerScore = 0;
 let computerScore = 0;
-
 let computerChoice;
 let playerChoice;
 const gameOptions = ["rock", "paper", "scissor"];
 
 
-function computerChose() {
+function computerChoose() {
   const randomNum = Math.floor(Math.random() * 3);
     computerChoice = gameOptions[randomNum];
     computerChoiceSpan.innerHTML = computerChoice;
-} //randomely choses computer choice
+}//random comp choice
 
 function userChoice(choice) {
     playerChoice = gameOptions[choice];
     userChoiceSpan.innerHTML = playerChoice;
-    computerChose();
+    computerChoose();
     game(playerChoice,computerChoice);
-} //player's selected choice
+}//player choice
 
-
+function game(playerChoice, computerChoice) {
+    if (playerChoice == computerChoice) {
+        won("tie");
+        return;
+    } //tie
 
     if (playerChoice == "rock" && computerChoice == "paper")
         won("computer");
@@ -43,27 +45,23 @@ function userChoice(choice) {
         won("player");
     else
         alert("Wrong inputs")
-} //result if there is a winner
-function game(playerChoice, computerChoice) {
-    if (playerChoice == computerChoice) {
-        won("tie");
-        return;  // when its a tie
-    }
+} //all scenarios in which there is a winner
+
 function won(winner) {
     if (winner == "player") {
-        roundResult.innerHTML = "You win :)";
+        roundResult.innerHTML = "You won :)";
         playerScore = playerScore + 1;
         pScoreboard.innerHTML = playerScore;
-    } //adds point to player if they win
+    } //adds point to player scoreboard
     else if (winner == "computer") {
-        roundResult.innerHTML = "You lose :(";
+        roundResult.innerHTML = "You lost :(";
         computerScore = computerScore + 1;
         cScoreboard.innerHTML = computerScore;
-    } //adds point to computer if it wins
+    }
     else {
         roundResult.innerHTML = "It's a tie :/";
-    }
-} //display when there is a tie
+    } //if tie
+}
 
 function resetGame() {
     roundResult.innerHTML = "";
@@ -73,4 +71,5 @@ function resetGame() {
     cScoreboard.innerHTML = computerScore;
     userChoiceSpan.innerHTML = "";
     computerChoiceSpan.innerHTML = "";
+    winnerPannel.style.display = "none";
 }//reset
