@@ -1,3 +1,6 @@
 body {
-  background-image: url("https://media-cldnry.s-nbcnews.com/image/upload/newscms/2016_11/1016196/rock-paper-scissors-today-tease-160317.jpg");
+    background-color:purple;
+}
+.text{
+  color:white;
 }
